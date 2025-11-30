@@ -34,31 +34,26 @@ void sol()
     }
     for (int i = 0; i < n; i++)
     {
-        v.push_back({b[i], a[i]});
+        v.push_back({min(b[i], p), a[i]});
     }
 
-    sort(v.begin(), v.end(), cmp);
-
-    // for (auto i : v)
-    // {
-    //     cout << i.first << " " << i.second << endl;
-    // }
-
-    int cost = p;
-    int x = 1;
+    sort(v.begin(), v.end(),cmp);
 
     for (auto i : v)
     {
-        if(x==n) break;
-        int y = n - x;
-        cost+=(i.first*(i.second>1));
-        x+=(i.second>1);
-        x++;
-        cost+=p;
-
-        
+        cout << i.first << " " << i.second << endl;
     }
 
+    int cost = p;
+    int x = n-1;
+    
+    for (auto i : v)
+    {
+        int y = min(x,i.second);
+        cost+=(i.first*y);
+        x-=y;
+    }
+ 
     cout<<cost<<nl;
 }
 signed main()
