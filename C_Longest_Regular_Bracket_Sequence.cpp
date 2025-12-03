@@ -30,7 +30,11 @@ void sol()
         }
     }
 
-    cout<<mx*2<<" "<<c<<nl;
+    if(mx*2){
+        cout<<mx*2<<" "<<st.size()<<nl;
+    }else{
+        cout<<0<<" "<<1<<nl;
+    }
 
     
 }
