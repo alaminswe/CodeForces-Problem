@@ -10,26 +10,47 @@ using namespace std;
 
 void sol()
 {
-    int a, b;
-    cin >> a >> b;
+    int n;
+    cin>>n;
 
-    
-    int smallValue = 100 * b;
-    int largeValue = 225 * a;
+    stack<int> st;
+    vector<int>v(n);
+    for (int i = 0; i < n; i++)
+    {
+        int x;
+        cin>>x;
+        st.push(x);
+        v[i]=x;
+    }
+    vector<int>res;
+    while (!st.empty())
+    {
+        int y = st.top();
 
-    if (smallValue > largeValue)
-    {
-        cout << "Small" << nl;
-    }
-    else if (smallValue < largeValue)
-    {
-        cout << "Large" << nl;
-    }
-    else
-    {
-        cout << "Equal" << nl;
-    }
+        int c = 0;
+        int sz = st.size();
+
+        // cout<<"y is "<<y <<"and size is"<<sz<<nl;
+        for (int i = sz-2; i >= 0; i--)
+        {
+            if(v[i]<y){
+                // cout<<"v[i] is "<<v[i]<<nl;
+                res.push_back(i+1);
+                c=1;
+                break;
+            }
+        }
+        if(!c) res.push_back(0);
+        st.pop();
         
+    }
+    reverse(res.rbegin(),res.rend());
+    for (auto u : res)
+    {
+        cout<<u<<" ";
+    }
+    
+    cout<<nl;
 }
 
 signed main()
