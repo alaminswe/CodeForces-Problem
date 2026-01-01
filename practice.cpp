@@ -3,45 +3,41 @@ using namespace std;
 
 #define int long long
 #define nl '\n'
-#define bismillah() ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
+#define bismillah()               \
+    ios_base::sync_with_stdio(0); \
+    cin.tie(0);                   \
+    cout.tie(0);
 
-void sol() {
-    int n, k;
-    cin >> n >> k;
-    string s;
-    cin >> s;
+void sol()
+{
+    int a, b;
+    cin >> a >> b;
 
-    int zeros = 0;
-    for (char c : s) if (c == '0') zeros++;
+    
+    int smallValue = 100 * b;
+    int largeValue = 225 * a;
 
-    int base = n / k;
-    int rem = n % k; // first 'rem' chains have length base+1
-    int minZeros = 0, oddChains = 0;
-
-    // Chains with length = base+1
-    for (int i = 0; i < rem; i++) {
-        int L = base + 1;
-        minZeros += L / 2;
-        if (L % 2 == 1) oddChains++;
+    if (smallValue > largeValue)
+    {
+        cout << "Small" << nl;
     }
-
-    // Chains with length = base
-    for (int i = 0; i < k - rem; i++) {
-        int L = base;
-        minZeros += L / 2;
-        if (L % 2 == 1) oddChains++;
+    else if (smallValue < largeValue)
+    {
+        cout << "Large" << nl;
     }
-
-    int maxZeros = minZeros + oddChains;
-
-    if (zeros >= minZeros && zeros <= maxZeros) cout << "Yes\n";
-    else cout << "No\n";
+    else
+    {
+        cout << "Equal" << nl;
+    }
+        
 }
 
-signed main() {
+signed main()
+{
     bismillah();
-    int t;
-    cin >> t;
-    while (t--) sol();
+    int t = 1;
+    // cin >> t;
+    while (t--)
+        sol();
     return 0;
 }
