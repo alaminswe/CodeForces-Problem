@@ -1,34 +1,34 @@
 #include <bits/stdc++.h>
 using namespace std;
-
-#define int long long
-#define nl '\n'
 #define bismillah()               \
     ios_base::sync_with_stdio(0); \
     cin.tie(0);                   \
     cout.tie(0);
+#define int long long
+#define nl '\n'
 
-
-int recurtion(int n,int &a[n]){
+void recurtion(int n){
     if(n==1) {
-        return a[1];
+        cout<<n<<nl;
+        return;
     }
-    recurtion(n,);
+    cout<<n<<" ";
+    recurtion(n-1);
 }
 void sol()
 {
     int n;
     cin >> n;
-    vector<int>v(n);
-    recurtion(n,v[n]);
+    recurtion(n);
 }
-
 signed main()
 {
     bismillah();
     int t = 1;
-    // cin >> t;
+    //cin >> t;
     while (t--)
+    {
         sol();
+    }
     return 0;
 }
