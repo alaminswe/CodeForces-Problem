@@ -22,15 +22,13 @@ void sol()
         cin >> b[i];
     }
 
-    int k = 0;
-    for (int i = 0; i < n; i++)
-    {
-        int x = k - a[i];
-        int y = b[i] - k;
-        k = max(x, y);
+    int mx = 0, mn = 0;
+    for (int i = 0; i < n; ++i) {
+        int new_mx = max(mx - a[i], b[i] - mn);
+        int new_mn = min(mn - a[i], b[i] - mx);
+        mx = new_mx, mn = new_mn;
     }
-
-    cout << k << "\n";
+    cout << mx << endl;
 }
 signed main()
 {

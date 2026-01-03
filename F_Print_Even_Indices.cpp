@@ -7,19 +7,28 @@ using namespace std;
 #define int long long
 #define nl '\n'
 
-int recurtion(int n){
-    if(n==0) {
-        return 1;
-    }
-    return n*recurtion(n-1);
+
+//  1 2 5 4 8
+//  0 1 2 3 4 
+void recurtion(int n, vector<int>v){
+    if(n<0) return;
+
+    if(!(n&1)) cout<<v[n]<<" "; 
+    recurtion(n-1, v );
+    
 }
 void sol()
 {
     int n;
     cin >> n;
-    int x = recurtion(n);
-    cout<<x<<nl;
-}
+    vector<int>v(n);
+    for (int i = 0; i < n; i++)
+    {
+        cin>>v[i];
+    }
+    
+    recurtion(n-1, v);
+}  
 signed main()
 {
     bismillah();
