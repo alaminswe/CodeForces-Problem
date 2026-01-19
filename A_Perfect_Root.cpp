@@ -10,27 +10,15 @@ void sol()
 {
     int n;
     cin >> n;
- 
-    vector<int> a(n);
-    for (int i = 0; i < n; i++)
+
+    int x = 2*n;
+
+    for (int i = n; i < x; i++)
     {
-        cin>>a[i];
+        cout<<i*i<<" ";
     }
- 
-    vector<int> ans(n);
-    ans[0] = 1;
-    int c = 2;
-    for (int i = 1; i < n; i++) {
-        int d = a[i] - a[i - 1]; 
-        if (i - d < 0) {
-            ans[i] = c++;
-        } else {
-            ans[i] = ans[i - d];
-        } 
-    }
- 
-    for (int &i : ans) cout << i << ' ';
-    cout << endl;
+    
+    cout<<nl;
 }
 signed main()
 {
