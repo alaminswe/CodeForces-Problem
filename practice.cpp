@@ -1,47 +1,39 @@
 #include <bits/stdc++.h>
 using namespace std;
-#define bismillah()               \
-    ios_base::sync_with_stdio(0); \
-    cin.tie(0);                   \
-    cout.tie(0);
+
+#define bismillah()              \
+    ios::sync_with_stdio(false); \
+    cin.tie(NULL);
 #define int long long
 #define nl '\n'
 
-//  1 2 5 4 8
-//  0 1 2 3 4
-int recurtion(int n, vector<int> v, int s)
+void sol()
 {
-    if (n == 0)
-        return v[n];
-
-    return s + v[n] + recurtion(n - 1, v, s);
-}
-
-int sol()
-{
-    int n;
-    cin >> n;
-    vector<int> v(n);
-    for (int i = 0; i < n; i++)
+    int b, g, x, y, n;
+    cin >> b >> g >> x >> y >> n;
+    if (x + y > n)
     {
-        cin >> v[i];
+        cout << -1 << nl;
+        return;
     }
+    int low = (b + g + n - 1) / n; 
 
-    int sum = recurtion(n - 1, v, 0);
+    int high = min(b/x, g/y);
 
-    return sum;
+    if (low > high)
+        cout << -1 << '\n';
+    else
+        cout << low << '\n';
 }
+
 signed main()
 {
     bismillah();
-    int t = 1;
+    int t;
     cin >> t;
-    int c = 1;
     while (t--)
     {
-        cout << "Case " << c << ": " << sol() << nl;
-        c++;
+        sol();
     }
-
     return 0;
 }
