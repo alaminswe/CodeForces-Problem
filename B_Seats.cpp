@@ -13,35 +13,38 @@ void sol()
 
     string s;
     cin >> s;
-
     if (n == 1 || n == 2)
     {
         cout << 1 << nl;
         return;
     }
-    int one = count(s.begin(),s.end(),'1');
-    s = '1'+s+'1';
-    int i = 0, j = n - 1;
-    while (i < j && s[i] == '0' && s[j] == '0')
-    {
-        i++;
-        j--;
-    }
 
-    int ans = 0,cnt=0;
-    for (int k = i; k <= j; k ++)
+    int ans = 0,cnt=0,on = 0;
+    for (int k = 0; k < n; k++)
     {
         if (s[k] == '0')
         {
             cnt++;
         }else{
             cnt=0;
+            on = 1;
         }
 
-        if(cnt==3) ans++;
+        if(cnt == 2 && on == 0) {
+            ans++;
+            cnt = 0;
+            on = 1;
+        }
+        else if(cnt == 3) {
+            ans++;
+            cnt = 0;
+        }
     }
+    if(cnt==2) ans++;
+    
+    int one = count(s.begin(),s.end(),'1');
 
-    cout << one+ans+(ans>0) << nl;
+    cout << one+ans << nl;
 }
 signed main()
 {
