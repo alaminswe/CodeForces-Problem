@@ -19,6 +19,23 @@ void sol()
 
     if(zero==n){
         cout<<0<<nl;
+        return;
+    }else if(!(one&1)){
+        cout<<one<<nl;
+        for (int i = 0; i < n; i++)
+        {
+            if(s[i]=='1')cout<<i+1<<" ";
+        }
+        cout<<nl;
+        return;
+    }else if(zero&1){
+        cout<<zero<<nl;
+        for (int i = 0; i < n; i++)
+        {
+            if(s[i]=='0')cout<<i+1<<" ";
+        }
+        cout<<nl;
+        return;
     }
 
     cout<<-1<<nl;
