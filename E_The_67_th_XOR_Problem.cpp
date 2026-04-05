@@ -14,23 +14,16 @@ void sol() {
         cin >> v[i];
     }
 
-    int x = n - 1;
-
-    while (x--) {
-        sort(v.begin(), v.end());
-
-        int mx = v.back(); 
-
-        for (int i = 0; i < v.size(); i++) {
-            v[i] ^= mx;
-        }
-
-        if (v.size() > 1) {
-            v.erase(v.end() - 1);
+    int ans=0;
+    for(int i=0; i<n; i++)
+    {
+        for(int j=0; j<n; j++)
+        {
+            if(i != j)
+            {ans = max(ans, (v[i]^v[j]));}
         }
     }
-
-    cout << v[0] << nl;
+    cout<<ans<<nl;
 }
 
 signed main() {
