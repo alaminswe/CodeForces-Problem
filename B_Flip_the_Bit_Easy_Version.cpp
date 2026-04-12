@@ -9,33 +9,29 @@ void sol()
     int n, k;
     cin >> n >> k;
 
-    vector<int> v(n);
-    for (int i = 0; i < n; i++)
+    vector<int> v(n+2);
+    for (int i = 1; i <= n; i++)
     {
         cin >> v[i];
     }
 
     int p;
     cin >> p;
-    p--; 
 
-    int x = v[p];
+    v[0]=v[n+1]=v[p];
 
-    int s = v[0];
-
-    int ans = 0;
-
-    for (int i = 0; i < n; i++)
+    int l=0,r=0;
+    for (int i = 0; i < p; i++)
     {
-        if (v[i] != x)
-        {
-            ans++;
-            while (i < n && v[i] != x)
-                i++;
-        }
+        if(v[i]!=v[i+1]) l++;
     }
 
-    cout << ans << nl;
+    for (int i = p; i <= n; i++)
+    {
+        if(v[i]!=v[i+1]) r++;
+    }
+
+    cout << max(l,r) << nl;
 }
 
 signed main()

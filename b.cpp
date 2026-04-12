@@ -1,47 +1,60 @@
 #include <bits/stdc++.h>
+
 using namespace std;
-#define bismillah()               \
-    ios_base::sync_with_stdio(0); \
-    cin.tie(0);                   \
-    cout.tie(0);
-#define int long long
-#define nl '\n'
-void sol()
-{
+
+struct Element {
+    int val, id;
+};
+
+bool compareElements(const Element& a, const Element& b) {
+    return a.val < b.val;
+}
+
+void solve() {
     int n;
     cin >> n;
-
-    vector<int>v(n+1);
-    for (int i = 1; i <= n; i++)
-    {
-        cin>>v[i];
-    }
-    int t=n,cnt=0;
-    for (int i = 1; i <= n; i++)
-    {
-        // if(v[i]==0){
-        //     break;
-        // }
-        // cnt++;
-        // int x = v[i];
-        // v[x] = 0;
-
-        if(v[i]==i){
-            cnt++;
-        }else if(v[i]<i) cnt++;
+    vector<Element> all;
+    for (int i = 0; i < n; i++) {
+        int a, b, c;
+        cin >> a >> b >> c;
+        all.push_back({a, i});
+        all.push_back({b, i});
+        all.push_back({c, i});
     }
 
-    cout<<cnt<<nl;
-    
+    sort(all.begin(), all.end(), compareElements);
+
+    vector<int> freq(n, 0);
+    int distinct_rows = 0;
+    int left = 0;
+    int min_diff = 2e9; 
+
+    for (int right = 0; right < all.size(); right++) {
+        if (freq[all[right].id] == 0) {
+            distinct_rows++;
+        }
+        freq[all[right].id]++;
+
+        while (distinct_rows == n) {
+            min_diff = min(min_diff, all[right].val - all[left].val);
+            
+            freq[all[left].id]--;
+            if (freq[all[left].id] == 0) {
+                distinct_rows--;
+            }
+            left++;
+        }
+    }
+    cout << min_diff << endl;
 }
-signed main()
-{
-    bismillah();
-    int t = 1;
+
+int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
+    int t;
     cin >> t;
-    while (t--)
-    {
-        sol();
+    while (t--) {
+        solve();
     }
     return 0;
 }
